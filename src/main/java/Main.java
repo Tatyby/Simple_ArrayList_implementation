@@ -12,6 +12,7 @@ public class Main {
         System.out.println("Элемент с ндексом 0: " + list.get(0));
         list.deleteElement(5);
         System.out.println("Удалено первое вхождение элемента 5: " + Arrays.toString(list.getList()));
+        list.deleteElement(9);
         list.sort();
         System.out.println("Список отсортирован: " + Arrays.toString(list.getList()));
         list.clear();
