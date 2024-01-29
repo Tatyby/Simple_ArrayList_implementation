@@ -19,18 +19,23 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
 
     @Override
     public void add(T element) {
-        if (size == array.length) {
-            increaseCapacity();
-        }
+        checkingLengthArray();
         array[size++] = element;
     }
 
     @Override
     public void add(int index, T element) {
         indexOutOfBounds(index);
+        checkingLengthArray();
         System.arraycopy(array, index, array, index + 1, size - index);
         array[index] = element;
         size++;
+    }
+
+    private void checkingLengthArray() {
+        if (size == array.length) {
+            increaseCapacity();
+        }
     }
 
     @Override
@@ -42,7 +47,7 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
     @Override
     public void deleteElement(T element) {
         for (int i = 0; i < size; i++) {
-            if (array[i].equals(element)) {
+            if (array[i] != null && array[i].equals(element)) {
                 deleteElementAtIndex(i);
                 return;
             }
