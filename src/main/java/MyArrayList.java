@@ -17,11 +17,6 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
         size = 0;
     }
 
-    /**
-     * Метод добавляет элемент в конец списка.
-     *
-     * @param element элемент для добавления.
-     */
     @Override
     public void add(T element) {
         if (size == array.length) {
@@ -30,13 +25,6 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
         array[size++] = element;
     }
 
-    /**
-     * Метод добавляет элемен по указанному индексу, сдвигая остальные элементы.
-     *
-     * @param index   индекс, по которому нужно добавить элемент.
-     * @param element элемент для добавления.
-     * @throws IndexOutOfBoundsException если индекс выходит за пределы допустимого диапазона.
-     */
     @Override
     public void add(int index, T element) {
         indexOutOfBounds(index);
@@ -45,24 +33,12 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
         size++;
     }
 
-    /**
-     * Метод возвращает элемент по указанному индексу.
-     *
-     * @param index индекс элемента.
-     * @return элемент по указанному индексу.
-     * @throws IndexOutOfBoundsException если индекс выходит за пределы допустимого диапазона.
-     */
     @Override
     public T get(int index) {
         indexOutOfBounds(index);
         return (T) array[index];
     }
 
-    /**
-     * Метод удаляет первое вхождение указанного элемента из списка.
-     *
-     * @param element элемент для удаления.
-     */
     @Override
     public void deleteElement(T element) {
         for (int i = 0; i < size; i++) {
@@ -73,18 +49,12 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
         }
     }
 
-    /**
-     * Метод очищает весь список.
-     */
     @Override
     public void clear() {
         Arrays.fill(array, 0, size, null);
         size = 0;
     }
 
-    /**
-     * Метод сортирует в естественном порядке (используется алгоритм сортировки слиянием).
-     */
     @Override
     public void sort() {
         if (size > 1) {
@@ -148,11 +118,6 @@ public class MyArrayList<T extends Comparable<? super T>> implements Sortable<T>
         array[--size] = null;
     }
 
-    /**
-     * Метод возвращающий массив значений.
-     *
-     * @return возвращает массив значений.
-     */
     @Override
     public Object[] getList() {
         return Arrays.copyOf(array, size);
